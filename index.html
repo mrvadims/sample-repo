@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script type="text/javascript">loadtimer=new Date();</script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
 <title>GA Test Page</title>
@@ -53,9 +54,16 @@
 <!-- Google Analytics -->
 <script type="text/javascript">
   var _gaq = _gaq || [];
-  _gaq.push([ '_setAccount', 'UA-29048147-1' ]);
-  _gaq.push([ '_trackPageview' ]);
-  _gaq.push(['_setSiteSpeedSampleRate', 100]);
+
+window.onload = function() {
+//    _gaq.push([ '_setAccount', 'UA-35290821-1' ]);
+//    _gaq.push([ '_trackPageview' ]);
+    _gaq.push(['timer._setSiteSpeedSampleRate', 100]);
+    _gaq.push(['timer._setAccount', 'UA-35290821-1'], ['timer._trackPageview']);
+    _gaq.push(['timer._trackEvent', 'loadtime', location.href, , parseInt(new Date() - loadtimer)]);
+    _gaq.push(['timer._trackEvent', 'time-to-render', location.href, , parseInt(rendertimer - loadtimer)]);
+  }
+  
 
   (function() {
     var ga = document.createElement('script');
@@ -66,6 +74,8 @@
     s.parentNode.insertBefore(ga, s);
   })();
 </script>
+
+<script type="text/javascript">rendertimer=new Date();</script>
 </head>
 
 <body>

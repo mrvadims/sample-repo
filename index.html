@@ -61,10 +61,11 @@
 window.onload = function() {
 //    _gaq.push([ '_setAccount', 'UA-35290821-1' ]);
 //    _gaq.push([ '_trackPageview' ]);
-    _gaq.push(['timer._setSiteSpeedSampleRate', 100]);
-    _gaq.push(['timer._setAccount', 'UA-35290821-1'], ['timer._trackPageview']);
-    _gaq.push(['timer._trackEvent', 'loadtime', location.href, , parseInt(new Date() - loadtimer)]);
-    _gaq.push(['timer._trackEvent', 'time-to-render', location.href, , parseInt(rendertimer - loadtimer)]);
+    _gaq.push(['_setSiteSpeedSampleRate', 100]);
+    _gaq.push(['_setAccount', 'UA-35290821-1']);
+    _gaq.push(['_trackPageview']);
+    _gaq.push(['_trackEvent', 'loadtime', location.href, , parseInt(new Date() - loadtimer)]);
+    _gaq.push(['_trackEvent', 'time-to-render', location.href, , parseInt(rendertimer - loadtimer)]);
   
     var ga = document.createElement('script');
     ga.type = 'text/javascript';

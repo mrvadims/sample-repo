@@ -74,7 +74,7 @@
   window.onload = function() {
     _gaq.push([ '_setAccount', 'UA-35290821-1' ]);
     _gaq.push([ '_setSampleRate', 99 ]);
-    _gaq.push([ '_setSiteSpeedSampleRate', 99 ]);
+    _gaq.push([ '_setSiteSpeedSampleRate', 100 ]);
     _gaq.push([ '_trackPageview' ]);
     _gaq.push([ '_trackEvent', 'loadtime', location.href, , parseInt(new Date() - loadtimer) ]);
     _gaq.push([ '_trackEvent', 'time-to-render', location.href, , parseInt(rendertimer - loadtimer) ]);
@@ -198,5 +198,31 @@
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(ga, s);
   })();
+</script>
+
+<script type="text/javascript">
+
+  var DEBUG = true;
+  window.onload = function() {
+    pageStats();
+  }
+
+  function pageStats() {
+    var pt = window.performance.timing;
+    debug("Redirection Time", pt.redirectEnd - pt.redirectStart);
+    debug("Domain Lookup Time", pt.domainLookupEnd - pt.domainLookupStart);
+    debug("Server Connection Time", pr.connectEnd - pt.connectStart);
+    debug("Server Response Time", pt.responseStart - pt.requestStart);
+    debug("Page Download Time", pt.responseEnd - pt.responseStart);
+    debug("Browser Time", pt.loadEventEnd - pt.responseEnd);
+    debug("Page Load Time", pt.loadEventEnd - pt.navigationStart);
+  }
+
+  function debug(msg, value) {
+
+    if (DEBUG) {
+      console.log("" + msg + " : " + JSON.stringify(value));
+    }
+  }
 </script>
 </html>

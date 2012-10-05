@@ -90,6 +90,10 @@
 	<div id="gauge_div"></div>
 	<input type='button' value='Go Faster' onclick='changeTemp(1)' />
 	<input type='button' value='Slow down' onclick='changeTemp(-1)' />
+	
+	<p>
+	<div id="page_stats_div"></div>
+	<input type='button' value='Show Page Stats' onclick='showPageStats()' />
 
 	<h3>Lorem Ipsum</h3>
 	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc rhoncus,
@@ -203,15 +207,15 @@
 <script type="text/javascript">
 
   var DEBUG = true;
-  window.onload = function() {
-    pageStats();
-  }
+//   window.onload = function() {
+//     pageStats();
+//   }
 
-  function pageStats() {
+  function showPageStats() {
     var pt = window.performance.timing;
     debug("Redirection Time", pt.redirectEnd - pt.redirectStart);
     debug("Domain Lookup Time", pt.domainLookupEnd - pt.domainLookupStart);
-    debug("Server Connection Time", pr.connectEnd - pt.connectStart);
+    debug("Server Connection Time", pt.connectEnd - pt.connectStart);
     debug("Server Response Time", pt.responseStart - pt.requestStart);
     debug("Page Download Time", pt.responseEnd - pt.responseStart);
     debug("Browser Time", pt.loadEventEnd - pt.responseEnd);

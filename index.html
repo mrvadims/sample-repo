@@ -1,19 +1,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<script type="text/javascript">
-  var loadtimer = new Date();
-</script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
 <title>GA Test Page</title>
 
 <script type="text/javascript" src=instrumentation.js></script>
 <script type="text/javascript" src=visualization.js></script>
 
 <!-- Google visualization library -->
-<script type='text/javascript'
-	src='https://www.google.com/jsapi?callback=loadVisualization'></script>
+<script type='text/javascript' src='https://www.google.com/jsapi?callback=loadVisualization'></script>
 
 <!-- Jolokia required libraries -->
 <!--
@@ -45,10 +40,6 @@
     document.getElementById('text_div').innerHTML = text;
   }
 </script>
-
-<script type="text/javascript">
-  var rendertimer = new Date();
-</script>
 </head>
 
 <body>
@@ -62,6 +53,7 @@
 
   <div id="text_div"></div>
 	<p>
+  <div id="image_div"></div>
 		<a href="http://www.markit.com"><img src="markit_logo.bmp"
 			alt="Markit" /></a>
 </body>

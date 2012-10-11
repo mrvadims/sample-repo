@@ -42,9 +42,7 @@ function initGA() {
   _gaq.push([ '_setSiteSpeedSampleRate', 100 ]);
   _gaq.push([ '_trackPageview' ]);
   /*
-   * _gaq.push([ '_trackEvent', 'loadtime', location.href, , parseInt(new Date() -
-   * loadtimer) ]); _gaq.push([ '_trackEvent', 'time-to-render', location.href, ,
-   * parseInt(rendertimer - loadtimer) ]); _gaq.push([ '_setCustomVar', 1,
+   *  _gaq.push([ '_setCustomVar', 1,
    * 'loadtime', parseInt(new Date() - loadtimer), 3 ]); _gaq.push([
    * '_setCustomVar', 2, 'rendertime', parseInt(rendertimer - loadtimer), 3 ]);
    */

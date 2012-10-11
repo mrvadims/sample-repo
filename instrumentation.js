@@ -17,22 +17,20 @@
 var _gaq = _gaq || [];
 var DEBUG = true;
 
-
 function loadGA() {
 
-  var gaURL = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; 
+  var gaURL = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
   timeJsLoad("GA", gaURL, "google-analytics.com", true);
 
   /**
    * Below is a traditional way of loading Google Analytics. However, here we
    * are timing loading GA library and recording results in GA
    * 
-   * var ga = document.createElement('script'); 
-   * ga.type = 'text/javascript';
-   * ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; 
-   * ga.async = true; 
-   * var s = document.getElementsByTagName('script')[0]; 
-   * s.parentNode.insertBefore(ga, s);
+   * var ga = document.createElement('script'); ga.type = 'text/javascript';
+   * ga.src = ('https:' == document.location.protocol ? 'https://ssl' :
+   * 'http://www') + '.google-analytics.com/ga.js'; ga.async = true; var s =
+   * document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga,
+   * s);
    */
 }
 
@@ -42,12 +40,11 @@ function initGA() {
   _gaq.push([ '_setSiteSpeedSampleRate', 100 ]);
   _gaq.push([ '_trackPageview' ]);
   /*
-   *  _gaq.push([ '_setCustomVar', 1,
-   * 'loadtime', parseInt(new Date() - loadtimer), 3 ]); _gaq.push([
-   * '_setCustomVar', 2, 'rendertime', parseInt(rendertimer - loadtimer), 3 ]);
+   * _gaq.push([ '_setCustomVar', 1, 'loadtime', parseInt(new Date() -
+   * loadtimer), 3 ]); _gaq.push([ '_setCustomVar', 2, 'rendertime',
+   * parseInt(rendertimer - loadtimer), 3 ]);
    */
 }
-
 
 /**
  * Asynchronously loads a JavaScript resources by creating a DOM Script element
@@ -73,7 +70,7 @@ function initGA() {
 function timeJsLoad(name, url, location, async) {
 
   var category = "JavaScript Library Loading";
-  
+
   var js = document.createElement('script');
   js.type = 'text/javascript';
   js.src = url;
@@ -96,7 +93,17 @@ function jsLoadCallback(event) {
 
   // Resource has loaded. Print out console log message
   log("Loaded JS resource", target.time);
+}
 
+function timeImageLoad(name, url, location, parent) {
+  
+  var category = "Image Loading";
+  
+  var img = document.createElement("img");
+  img.src = url;
+  var trackTiming = new TrackTiming(category, name, location).debug();
+  document.getElementById(parent).appendChild(img);
+  trackTiming.endTime().send();
 }
 
 /**
@@ -113,7 +120,7 @@ function jsLoadCallback(event) {
  *          readyState property of the XMLHttpRequest object changes.
  */
 function timeXMLHttpRequest(name, url, location, callback) {
-  
+
   var category = "XMLHttpRequest";
   var request = getXMLHttpRequest();
   if (request) {
@@ -147,21 +154,20 @@ function getXMLHttpRequest() {
 }
 
 function xmlHttpRequestCallback() {
-  
+
   var e = event || window.event;
   var target = e.target ? e.target : e.srcElement;
 
   if (target.readyState == 4 && target.status == 200) {
 
-      target.time.endTime().send();
+    target.time.endTime().send();
 
-      // Resource has loaded. Print out console log message
-      log("Executed XML HTTP Request", target.time);
-  
-      target.callback(target.responseText);
+    // Resource has loaded. Print out console log message
+    log("Executed XML HTTP Request", target.time);
+
+    target.callback(target.responseText);
   }
 }
-
 
 /**
  * Utility function to add a random number as a query parameter to the url. This
@@ -272,7 +278,6 @@ TrackTiming.prototype.send = function() {
   return this;
 };
 
-
 function logPageStats() {
   var pt = window.performance.timing;
   log("Redirection Time", pt.redirectEnd - pt.redirectStart);
@@ -285,7 +290,7 @@ function logPageStats() {
 }
 
 function log(msg, value) {
-  
+
   if (DEBUG && window.console && window.console.log) {
     console.log("" + msg + (value ? " : " + JSON.stringify(value) : ""));
   }

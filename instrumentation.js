@@ -98,8 +98,6 @@ function jsLoadCallback(event) {
   target.time.endTime().send();
 
   // Resource has loaded. Print out console log message
-  log("Loaded JS resource: " + target.time.category + "::" + target.time.variable + "::" + target.time.label
-      + "::" + target.time.elapsedTime);
   log("Loaded JS resource", target.time);
 
 }
@@ -161,11 +159,9 @@ function xmlHttpRequestCallback() {
       target.time.endTime().send();
 
       // Resource has loaded. Print out console log message
-      log("Loaded JS resource: " + target.time.category + "::" + target.time.variable + "::" + target.time.label
-          + "::" + target.time.elapsedTime);
       log("Executed XML HTTP Request", target.time);
   
-      target.time.callback(target.responseText);
+      target.callback(target.responseText);
   }
 }
 

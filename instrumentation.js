@@ -165,7 +165,7 @@ function xmlHttpRequestCallback() {
           + "::" + target.time.elapsedTime);
       log("Executed XML HTTP Request", target.time);
   
-      target.time.callback(target.responseText);
+      target.callback(target.responseText);
   }
 }
 

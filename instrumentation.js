@@ -75,7 +75,6 @@ function initGA() {
 function timeJsLoad(name, url, location, async) {
 
   var category = "JavaScript Library Loading";
-//  loadJs(url, loadJsLibCallback, trackTiming, async);
   
   var js = document.createElement('script');
   js.type = 'text/javascript';

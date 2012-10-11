@@ -28,11 +28,16 @@
   timeJsLoad("jolokia-simple", "http://www.jolokia.org/dist/1.0.5/js/jolokia-simple.js", "jolokia.org", false);
 </script>
 
-<script type="text/javascript">
+<script type="text/javascript" async>
+/*   
   window.onload = function() {
 
-    //  initUI();
     initGA();
+    initUI();
+  }
+ */  
+  function initUI() {
+    
     timeXMLHttpRequest("Lorem Ipsum", "./lorem-ipsum.txt", "github.com", addTextToPage);
     timeImageLoad("Markit Logo", "./markit_logo.bmp", "github.com", "image_div");
   }

@@ -8,7 +8,8 @@
 <script type="text/javascript" src=visualization.js></script>
 
 <!-- Google visualization library -->
-<script type='text/javascript' src='https://www.google.com/jsapi?callback=loadVisualization'></script>
+<script type='text/javascript'
+	src='https://www.google.com/jsapi?callback=loadVisualization'></script>
 
 <!-- Traditional way of loading required JS libraries -->
 <!--
@@ -49,15 +50,23 @@
 <body>
 
 	<div id="gauge_div"></div>
- 	<input type='button' value='Go Faster' onclick='changeTemp(1)' />
+	<input type='button' value='Go Faster' onclick='changeTemp(1)' />
 	<input type='button' value='Slow down' onclick='changeTemp(-1)' />
 	<p>
 	<div id="page_stats_div"></div>
-	<input type='button' value='Show Page Stats' onclick='logPageStats()' />
+	<input type='button' value='Log Page Stats' onclick='logPageStats()' />
 
-  <div id="text_div"></div>
+  <div id="button_div"></div>
+  <input type='button'  value="Send GA Event" 
+    onclick="_gaq.push(['_trackEvent', 'Click', 'Send GA Event', 'Internal',, false]);" />
+  
+  <div id="download_div"></div>
+	<a href="salesReport2012.pdf"
+		onClick="_gaq.push(['_trackEvent', 'Download', 'Sales Report 2012', 'salesReport2012.pdf',, false]);">Download Sales Report</a>
+
+	<div id="text_div"></div>
 	<p>
-  <div id="image_div"></div>
-<!-- 		<img src="markit_logo.bmp" alt="Markit" /> -->
+	<div id="image_div"></div>
+	<!-- 		<img src="markit_logo.bmp" alt="Markit" /> -->
 </body>
 </html>

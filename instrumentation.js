@@ -60,6 +60,13 @@ function initGA(account, sampleRate, siteSpeedSampleRate) {
   if(siteSpeedSampleRate) {
     _gaq.push([ '_setSiteSpeedSampleRate', siteSpeedSampleRate ]);
   }
+
+  // If in DEBUG mode shorten the cookie timeout to 1 sec
+  if (DEBUG) {
+    _gaq.push(['_setSessionCookieTimeout', 1000]);
+    _gaq.push(['_setVisitorCookieTimeout', 1000]);
+    _gaq.push(['_setCampaignCookieTimeout', 1000]);
+  }
   _gaq.push([ '_trackPageview' ]);
 }
 

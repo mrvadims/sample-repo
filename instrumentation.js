@@ -22,9 +22,10 @@ var DEBUG = true;
  */
 function loadGA() {
 
+  // http://www.google-analytics.com/u/ga_debug.js
   var ga_library = "ga.js";
   if (DEBUG) {
-    ga_library = "ga_debug.js";
+    ga_library = "u/ga_debug.js";
   }
   var gaURL = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/' + ga_library;
   timeJsLoad("GA", gaURL, "google-analytics.com", true);

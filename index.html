@@ -10,7 +10,7 @@
 <!-- Google visualization library -->
 <script type='text/javascript' src='https://www.google.com/jsapi?callback=loadVisualization'></script>
 
-<!-- Jolokia required libraries -->
+<!-- Traditional way of loading required JS libraries -->
 <!--
  <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.js"></script>
  <script type="text/javascript" src="https://github.com/douglascrockford/JSON-js/raw/master/json2.js"></script>
@@ -18,8 +18,8 @@
  <script type="text/javascript" src="http://www.jolokia.org/dist/1.0.5/js/jolokia-simple.js"></script>
  -->
 
+<!-- Loading JS libraries, timing and collecting data using instrumetaion wrapper -->
 <script type="text/javascript">
-  // Load JS libraries  
   //  loadJsLib("Loading Google API", "https://www.google.com/jsapi?callback=loadVisualization", "google.com", true);
   loadGA();
   timeJsLoad("jQuery", "http://code.jquery.com/jquery-1.7.2.js", "jquery.com", false);
@@ -31,7 +31,7 @@
 <script type="text/javascript">
   window.onload = function() {
 
-    initGA();
+    initGA('UA-35290821-1', 100, 100);
     initUI();
   }
 

@@ -17,6 +17,9 @@
 var _gaq = _gaq || [];
 var DEBUG = true;
 
+/**
+ * Time and laod Google Analytics library 
+ */
 function loadGA() {
 
   var gaURL = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
@@ -34,16 +37,25 @@ function loadGA() {
    */
 }
 
-function initGA() {
-  _gaq.push([ '_setAccount', 'UA-35290821-1' ]);
-  _gaq.push([ '_setSampleRate', 99 ]);
-  _gaq.push([ '_setSiteSpeedSampleRate', 100 ]);
+/**
+ * Initialize Google Analytics
+ * 
+ * @param account Must be specified (i.e. UA-XXXXXXXX-X)
+ * @param sampleRate An optional parameter that specifies sample rate to be used
+ *        by GA. By default, a fixed 1% sampling of the site visitors is used
+ * @param siteSpeedSampleRate An optional parameter that specifies sample rate for
+ *        Site Speed data collection. By default, a fixed 1% sampling of the site 
+ *        visitors is used
+ */
+function initGA(account, sampleRate, siteSpeedSampleRate) {
+  _gaq.push([ '_setAccount', account ]);
+  if(sampleRate) {
+    _gaq.push([ '_setSampleRate', sampleRate ]);
+  }
+  if(siteSpeedSampleRate) {
+    _gaq.push([ '_setSiteSpeedSampleRate', siteSpeedSampleRate ]);
+  }
   _gaq.push([ '_trackPageview' ]);
-  /*
-   * _gaq.push([ '_setCustomVar', 1, 'loadtime', parseInt(new Date() -
-   * loadtimer), 3 ]); _gaq.push([ '_setCustomVar', 2, 'rendertime',
-   * parseInt(rendertimer - loadtimer), 3 ]);
-   */
 }
 
 /**
@@ -79,7 +91,7 @@ function timeJsLoad(name, url, location, async) {
   var firstScriptTag = document.getElementsByTagName('script')[0];
 
   var trackTiming = new TrackTiming(category, name, location).debug();
-  js.time = trackTiming.startTime();
+  js.trackTiming = trackTiming.startTime();
 
   firstScriptTag.parentNode.insertBefore(js, firstScriptTag);
 
@@ -89,10 +101,10 @@ function jsLoadCallback(event) {
   var e = event || window.event;
   var target = e.target ? e.target : e.srcElement;
 
-  target.time.endTime().send();
+  target.trackTiming.endTime().send();
 
   // Resource has loaded. Print out console log message
-  log("Loaded JS resource", target.time);
+  log("Loaded JS resource", target.trackTiming);
 }
 
 function timeImageLoad(name, url, location, parent) {
@@ -129,7 +141,7 @@ function timeXMLHttpRequest(name, url, location, callback) {
     request.onreadystatechange = xmlHttpRequestCallback;
 
     var trackTiming = new TrackTiming(category, name, location).debug();
-    request.time = trackTiming.startTime();
+    request.trackTiming = trackTiming.startTime();
 
     request.send();
   }
@@ -153,17 +165,17 @@ function getXMLHttpRequest() {
   }
 }
 
-function xmlHttpRequestCallback() {
+function xmlHttpRequestCallback(event) {
 
   var e = event || window.event;
   var target = e.target ? e.target : e.srcElement;
 
   if (target.readyState == 4 && target.status == 200) {
 
-    target.time.endTime().send();
+    target.trackTiming.endTime().send();
 
     // Resource has loaded. Print out console log message
-    log("Executed XML HTTP Request", target.time);
+    log("Executed XML HTTP Request", target.trackTiming);
 
     target.callback(target.responseText);
   }

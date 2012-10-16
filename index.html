@@ -7,12 +7,9 @@
 <script type="text/javascript" src=instrumentation.js></script>
 <script type="text/javascript" src=visualization.js></script>
 
-<!-- Google visualization library -->
-<script type='text/javascript'
-	src='https://www.google.com/jsapi?callback=loadVisualization'></script>
-
 <!-- Traditional way of loading required JS libraries -->
 <!--
+ <script type='text/javascript' src='https://www.google.com/jsapi'></script>
  <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.js"></script>
  <script type="text/javascript" src="https://github.com/douglascrockford/JSON-js/raw/master/json2.js"></script>
  <script type="text/javascript" src="http://www.jolokia.org/dist/1.0.5/js/jolokia.js"></script>
@@ -21,8 +18,8 @@
 
 <!-- Loading JS libraries, timing and collecting data using instrumetaion wrapper -->
 <script type="text/javascript">
-  //  loadJsLib("Loading Google API", "https://www.google.com/jsapi?callback=loadVisualization", "google.com", true);
   loadGA();
+  timeJsLoad("Loading Google API", "https://www.google.com/jsapi", "google.com", true);
   timeJsLoad("jQuery", "http://code.jquery.com/jquery-1.7.2.js", "jquery.com", false);
   timeJsLoad("json2", "https://github.com/douglascrockford/JSON-js/raw/master/json2.js", "github.com", false);
   timeJsLoad("jolokia", "http://www.jolokia.org/dist/1.0.5/js/jolokia.js", "jolokia.org", false);
@@ -37,6 +34,7 @@
   }
 
   function initUI() {
+    loadVisualization();
     timeXMLHttpRequest("Lorem Ipsum", "./lorem-ipsum.txt", "github.com", addTextToPage);
     timeImageLoad("Markit Logo", "./markit_logo.bmp", "github.com", "image_div");
   }

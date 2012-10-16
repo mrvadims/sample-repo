@@ -48,8 +48,10 @@
 <body>
 
 	<div id="gauge_div"></div>
-	<input type='button' value='Go Faster' onclick='changeTemp(1)' />
-	<input type='button' value='Slow down' onclick='changeTemp(-1)' />
+	<input type='button' value='Go Faster' 
+	 onclick="_gaq.push(['_trackEvent', 'Click', 'Go Faster', 'Internal',, false]); changeTemp(1)" />
+	<input type='button' value='Slow Down' 
+	 onclick="_gaq.push(['_trackEvent', 'Click', 'Slow Down', 'Internal',, false]); changeTemp(-1)" />
 	<p>
 	<div id="page_stats_div"></div>
 	<input type='button' value='Log Page Stats' onclick='logPageStats()' />

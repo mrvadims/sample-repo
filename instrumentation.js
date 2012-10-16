@@ -16,6 +16,7 @@
 // Global Variables
 var _gaq = _gaq || [];
 var DEBUG = true;
+var GA_DEBUG = false;
 
 /**
  * Time and laod Google Analytics library 
@@ -24,7 +25,7 @@ function loadGA() {
 
   // http://www.google-analytics.com/u/ga_debug.js
   var ga_library = "ga.js";
-  if (DEBUG) {
+  if (GA_DEBUG) {
     ga_library = "u/ga_debug.js";
   }
   var gaURL = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/' + ga_library;

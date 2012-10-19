@@ -71,6 +71,19 @@ function initGA(account, sampleRate, siteSpeedSampleRate) {
   _gaq.push([ '_trackPageview' ]);
 }
 
+function sendUserDetails(userContext) {
+  
+  if (userContext && userContext.userId) {
+    _gaq.push(['_setCustomVar', 1, 'userId', userContext.userId, 2]);
+  }
+  if (userContext && userContext.userType) {
+    _gaq.push(['_setCustomVar', 2, 'userType', userContext.userType, 2]);
+  }
+  if (userContext && userContext.company) {
+    _gaq.push(['_setCustomVar', 3, 'company', userContext.company, 2]);
+  }
+}
+
 /**
  * Asynchronously loads a JavaScript resources by creating a DOM Script element
  * and appending it to the page. The time it takes to load the script is

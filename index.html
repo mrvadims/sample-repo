@@ -29,8 +29,11 @@
 <script type="text/javascript">
   window.onload = function() {
 
-    _gaq.push(['_setCustomVar', 1, 'UserType', 'SellSide', 2]);
     initGA('UA-35290821-1', 100, 100);
+
+    var userContext = {userId: '246', userType: 'SellSide', company: 'Investment Bank DEF'};
+    sendUserDetails(userContext);
+
     initUI();
   }
 

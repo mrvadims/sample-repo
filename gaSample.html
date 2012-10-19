@@ -7,15 +7,18 @@
 
 <script type="text/javascript">
   var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-35290821-1']);
-  _gaq.push(['_setCustomVar', 1, 'UserType', 'SellSide', 2]);
-  _gaq.push(['_trackPageview']);
+  _gaq.push([ '_setAccount', 'UA-35290821-1' ]);
+  _gaq.push([ '_trackPageview' ]);
 </script>
 
+<script type="text/javascript">
+  _gaq.push([ '_setCustomVar', 1, 'userId', '123', 2 ]);
+  _gaq.push([ '_setCustomVar', 2, 'userType', 'BuySide', 2 ]);
+  _gaq.push([ '_setCustomVar', 3, 'company', 'Hedge Fund, Inc.', 2 ]);
+</script>
 </head>
 
 <body>
-
 	<div id="button_div"></div>
 	<input type='button' value="Send GA Event"
 		onclick="_gaq.push(['_trackEvent', 'Click', 'Send GA Event', 'Internal',, false]);" />
@@ -39,6 +42,7 @@
 		nec vestibulum lectus venenatis vel. Nullam vehicula malesuada auctor.
 		Morbi nec diam sit amet sem congue hendrerit sed cursus odio. Nunc
 		hendrerit lacinia posuere. Donec in ipsum nec erat dictum scelerisque.
+	
 	<p>Vestibulum purus turpis, pulvinar vitae ornare in, varius vel
 		nunc. Aliquam erat volutpat. Integer at quam vel nulla iaculis
 		blandit. Nam non leo mi. Maecenas pharetra volutpat nibh, eu
